@@ -1,0 +1,54 @@
+body {
+  background-color: #d66a21;
+}
+
+li {
+  padding: 5px;
+  margin: 5px;
+  background: #faebd7;
+}
+
+.box {
+  border-style: solid;
+  border-width: 5px;
+  min-height: 400px;
+}
+
+.label {
+  font-weight: bold;
+}
+
+.create-update-form {
+  padding: 5px;
+  margin: 5px;
+  background: aqua;
+}
+
+.form-group {
+  margin-bottom: 5px;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+h2 {
+  text-align: center;
+}
+
+.img {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+#image{
+  align-content: center;
+}
+.menu{
+  text-align: center;
+}
+.create-form{
+  text-align: center;
+}
