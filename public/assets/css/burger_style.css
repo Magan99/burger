@@ -44,11 +44,16 @@ h2 {
   margin-bottom: 10px;
 }
 #image{
-  align-content: center;
+  display: flex;
+  justify-content: center;
 }
 .menu{
   text-align: center;
 }
 .create-form{
   text-align: center;
+}
+h1{
+	color: black;
+	font-size: 30px;
 }

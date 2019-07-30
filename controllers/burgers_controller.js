@@ -6,22 +6,21 @@ var router = express.Router();
 var burger = require("../models/burger.js");
 
 // Create all our routes and set up logic within those routes where required.
-router.get("/", function (req, res) {
-  
-  // console.log('burger', burger);
-  burger.selectAll(function (data) {
-    console.log(data);
-  })
-  burger.selectAll(function (data) {
-
-    console.log('data', data);
-    var hbsObject = {
-      burgers: data
-    };
-    // console.log(hbsObject);
-    res.render("index", hbsObject);
-  });
+router.get("/", function(req,res){
+	res.redirect("burgers")
 });
+  
+
+  // console.log('burger', burger);
+  router.get("/burgers", function(req,res){
+    burger.selectAll(function(data){
+      var hbsObject = {
+        burgers: data
+      };
+      console.log(hbsObject);
+      res.render("index", hbsObject);
+    });
+  });
 
 router.post("/api/burgers", function (req, res) {
   console.log('======', req.body);
@@ -35,14 +34,15 @@ router.post("/api/burgers", function (req, res) {
     });
 });
 
-router.put("/burgers/:id", function (req, res) {
-  var condition = "id = " + req.params.id;
+router.put("/burgers/update/:id", function(req,res){
+	var condition = "id = " + req.params.id;
+	console.log("condition", condition);
 
-  burger.update({
-    devoured: true
-  }, function (result) {
-    res.redirect('/')
-  });
+	burgers.updateOne({
+		"devoured": req.body.devoured
+	}, condition, function(data){
+		res.redirect("/burgers")
+	});
 });
 
 // Export routes for server.js to use.

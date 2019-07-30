@@ -1,4 +1,7 @@
 <div class="container">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="/assets/css/burger_style.css" type="text/css" />
 
     <h1 style="text-align: center; color: rgb(15, 74, 78)">Order Your Burger!</h1>
 </div>
@@ -6,36 +9,47 @@
         src="https://thumbs.dreamstime.com/z/cute-camel-cartoon-character-burger-d-rendered-illustration-71758118.jpg"
         width="200" height="200">
 </div>
-<main>
+<div class="row">
 
-    <div class="container">
-        <div class="row">
-            <h2>Add a burger: </h2>
-            <div class="col s6 menu">
+    <div class="col-md-6">
+        <div class="panel-panel default">
+            <h2 style="text-align: center;">Ready to Eat Burger</h2>
+            <ul class="list-group">
                 {{#each burgers}}
                 {{#unless this.devoured}}
+                <li class="list-group-item">
+                    <div class="input-group">
+                        <p class="lead">{{this.burger_name}}</p>
+                        <span class="input-group-btn">
 
-                <div>
-                    <form action="/burgers/{{id}}" method="POST">
-                        <button type="submit" class='burgerAvailable'> {{this.burger_name}}</button>
-                    </form>
-                </div>
+                            {{!-- <form action="burgers/update/{{this.id}}?_method=PUT" method="POST">
+                                <input type="hidden" name="devoured" value="false">
+                                <button class="btn btn-default btn-lg" type="submit">Devour it!</button>
+                            </form> --}}
+                        </span>
+                    </div>
+                </li>
                 {{/unless}}
                 {{/each}}
-            </div>
-            <div class="row">
-                <ul>
-                    {{#each burgers}}
-                    {{#if eaten}}
-                    {{> state-check devour=true}}
-                    {{/if}}
-                    {{/each}}
-                </ul>
-            </div>
+            </ul>
+
         </div>
     </div>
-</main>
-
+    <div class="col-md-6">
+        <h1>Devoured Burgers</h1>
+        <div class="panel panel-default">
+            <ul class="list-group">
+                {{#each burgers}}
+                {{#if this.devoured}}
+                <li class="list-group-item">
+                    <p class="lead">{{this.burger_name}}</p>
+                </li>
+                {{/if}}
+                {{/each}}
+            </ul>
+        </div>
+    </div>
+</div>
 </br>
 <div class="row">
     <div class="col s-6">
@@ -46,5 +60,3 @@
     </div>
 
 </div>
-
-</body>
