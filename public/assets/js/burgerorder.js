@@ -8,7 +8,7 @@ $(function() {
         .val()
         .trim()
     };
-    console.log(newBurger);
+    // console.log(newBurger);
 
     // Send the POST request.
     $.ajax("/api/burgers", {
@@ -23,7 +23,8 @@ $(function() {
 
   $(".eat").on("click", function(event) {
     console.log("eat button was");
-    var id = $(this).data("id");
+    var id = $(this).attr("id-data");
+    console.log(id);
 
     var ate = {
       eaten: 1
@@ -33,14 +34,14 @@ $(function() {
     console.log(this);
 
     // Send the PUT request.
-    // $.ajax("/api/burgers/" + id, {
-    //   type: "PUT",
-    //   data: ate
-    // }).then(
-    //   function () {
-    //     console.log("changed eaten state to", ate);
-    //     // Reload the page to get the updated list
-    //     location.reload();
-    //   });
+    $.ajax("/api/burgers/" + id, {
+      type: "PUT",
+      data: ate
+    }).then(
+      function () {
+        console.log("changed eaten state to", ate);
+        // Reload the page to get the updated list
+        location.reload();
+      });
   });
 });
